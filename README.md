@@ -16,7 +16,7 @@ Builds the app for production to the `build` folder.
 
 ## Important! You need to start the JSON server
 
-### `json-server --watch db.json --port 8000`
+### `yarn start:server`
 
 You can change the database data manually in the `db.json` file located at the root folder.
 
