@@ -1,0 +1,77 @@
+{
+  "users": [
+    {
+      "login": "admin",
+      "phone": "+48570018205",
+      "password": "admin123",
+      "id": 1
+    }
+  ],
+  "reservations": [],
+  "tables": [
+    {
+      "id": 1,
+      "guests": 6
+    },
+    {
+      "id": 2,
+      "guests": 6
+    },
+    {
+      "id": 3,
+      "guests": 6
+    },
+    {
+      "id": 4,
+      "guests": 3
+    },
+    {
+      "id": 5,
+      "guests": 3
+    },
+    {
+      "id": 6,
+      "guests": 3
+    },
+    {
+      "id": 7,
+      "guests": 3
+    },
+    {
+      "id": 8,
+      "guests": 3
+    },
+    {
+      "id": 9,
+      "guests": 3
+    },
+    {
+      "id": 10,
+      "guests": 2
+    },
+    {
+      "id": 11,
+      "guests": 2
+    },
+    {
+      "id": 12,
+      "guests": 2
+    },
+    {
+      "id": 13,
+      "guests": 2
+    },
+    {
+      "id": 14,
+      "guests": 2
+    },
+    {
+      "id": 15,
+      "guests": 2
+    },
+    {
+      "id": 16,
+      "guests": 2
+    }
+  ]
+}
