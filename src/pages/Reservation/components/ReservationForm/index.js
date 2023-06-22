@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Box, Button, Step, StepLabel, Stepper } from '@mui/material';
 import { Formik, Form } from 'formik';
 import DayField from '../FromFields/DayField';
@@ -41,6 +41,7 @@ const renderStepContent = (
           values={values}
           reservations={reservations}
           guestsOnTables={guestsOnTables}
+          tables={tables}
         />
       );
     default:
@@ -56,7 +57,10 @@ const ReservationForm = ({ reservations, tables }) => {
   const dispatch = useDispatch();
   const currentValidationSchema = reservationValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
-  const guestsOnTables = getNumberGuestsOnTables(tables);
+  const guestsOnTables = useMemo(
+    () => getNumberGuestsOnTables(tables),
+    [tables],
+  );
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };

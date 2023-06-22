@@ -5,18 +5,22 @@ import { getReservationsFromDay } from '../../../../utils/getReservationsFromDay
 import { getReservationsFromTime } from '../../../../utils/getReservationsFromTime';
 import { CustomInput } from '../../../../components/CustomInput';
 
-const getMaxGuests = (selectedTimeReservations, guestsOnTables) =>
+const getMaxGuests = (selectedTimeReservations, guestsOnTables, tables) =>
   guestsOnTables -
-  selectedTimeReservations.reduce(
-    (acc, reservation) => acc + +reservation.guests,
-    0,
-  );
+  selectedTimeReservations.reduce((acc, reservation) => {
+    const guestsOnReservedTables = reservation.tableIds.reduce(
+      (acc, tableId) => acc + +tables[tableId - 1]?.guests,
+      0,
+    );
+    return acc + guestsOnReservedTables;
+  }, 0);
 
 const NumberGuestsField = ({
   isSubmitting,
   values,
   reservations,
   guestsOnTables,
+  tables,
   ...props
 }) => {
   const [field, meta] = useField(props);
@@ -31,8 +35,8 @@ const NumberGuestsField = ({
     [selectedDayReservations, values.time],
   );
   const maxGuests = useMemo(
-    () => getMaxGuests(selectedTimeReservations, guestsOnTables),
-    [selectedTimeReservations, guestsOnTables],
+    () => getMaxGuests(selectedTimeReservations, guestsOnTables, tables),
+    [selectedTimeReservations, guestsOnTables, tables],
   );
 
   return (
